@@ -9,28 +9,31 @@
 <script>
   var config = {
     commands: [
-      { key: 'a', name: 'Amazon', url: 'https://www.amazon.com', search: '/s/?field-keywords=' },
-      { key: 'd', name: 'Drive', url: 'https://drive.google.com/drive', search: '/search?q=' },
-      { key: 'e', name: 'Egghead', url: 'https://egghead.io', search: '/search?q=' },
-      { key: 'f', name: 'Facebook', url: 'https://www.facebook.com', search: '/search/top/?q=' },
-      { key: 'g', name: 'GitHub', url: 'https://github.com', search: '/search?q=' },
-      { key: 'h', name: 'Hacker News', url: 'https://hn.algolia.com', search: '/?query=' },
-      { key: 'i', name: 'Inbox', url: 'https://inbox.google.com', search: '/search/' },
-      { key: 'I', name: 'Instagram', url: 'https://www.instagram.com' },
-      { key: 'k', name: 'Keep', url: 'https://keep.google.com', search: '/#search/text=' },
-      { key: 'p', name: 'Product Hunt', url: 'https://www.producthunt.com', search: '/search?q=' },
+      { key: 'A', name: 'Amazon', url: 'https://www.amazon.com', search: '/s/?field-keywords=' },
+      { key: 'a', name: 'Kissasian', url: 'http://kissasian.com', search: '/Search/Drama/' },
+      { key: 'B', name: 'Buckeyelink', url: 'https://buckeyelink.osu.edu' },
+      { key: 'b', name: '/b/', url: 'https://4chan.org/b', search: '/catalog#s=' },
+      { key: 'c', name: 'Kisscartoon', url: 'http://kisscartoon.me', search: '/Search/Cartoon/' },
+      { key: 'd', name: 'Deviantart', url: 'https://deviantart.com', search: '/browse/all/?section=&global=1&q=' },
+      { key: 'F', name: 'Facebook', url: 'https://www.facebook.com', search: '/search/top/?q=' },
+      { key: 'f', name: '53rd Bank', url: 'https://53.com', search: '/search/results.html?cx=015862182068035309598%3Ayl2z8hjqalm&cof=FORID%3A9;NB:1&ie=UTF-8&q=' },
+      { key: 'G', name: 'GitHub', url: 'https://github.com', search: '/search?q=' },
+      { key: 'g', name: '/g/', url: 'https://4chan.org/g', search: '/catalog#s=' },
+      { key: 'k', name: 'Kissanime', url: 'https://kissanime.to', search: '/Search/Anime/' },
+      { key: 'l', name: '/lit/', url: 'https://4chan.org/lit', search: '/catalog#s=' },
+      { key: 'o', name: 'Outlook', url: 'http://outlook.com', search: '/?fid=flsearch&srch=1&skws=' },
+    { key: 'p', name: 'The Pirate Bay', url: 'https://thepiratebay.org', search: '/search/' },
       { key: 'r', name: 'Reddit', url: 'https://www.reddit.com', search: '/search?q=' },
-      { key: 's', name: 'SoundCloud', url: 'https://soundcloud.com', search: '/search?q=' },
-      { key: 't', name: 'Twitter', url: 'https://twitter.com', search: '/search?q=' },
-      { key: 'u', name: 'Unsplash', url: 'https://unsplash.com', search: '/search?keyword=' },
-      { key: 'y', name: 'YouTube', url: 'https://www.youtube.com', search: '/weather?search_query=' },
-      { key: 'Y', name: 'YTS', url: 'https://yts.ag', search: '/browse-movies/' },
-      { key: '8', name: '0.0.0.0:8080', url: 'http://0.0.0.0:8080' }
+      { key: 'T', name: 'Tumblr', url: 'https://tumblr.com', search: '/search/' },
+      { key: 't', name: 'Twitch', url: 'https://twitch.tv' },
+      { key: 'v', name: '/v/', url: 'https://4chan.org/v', search: '/catalog#s=' },
+      { key: 'w', name: '/wg/', url: 'https://4chan.org/wg', search: '/catalog#s=' },
+      { key: 'y', name: 'YouTube', url: 'https://www.youtube.com', search: '/results?search_query=' },
     ],
 
     // if none of the keys are matched, this is triggered
     // for Duck Duck Go use: https://duckduckgo.com/?q=
-    defaultCommand: 'https://www.google.com/search?q=',
+    defaultCommand: 'https://www.duckduckgo.com/?q=',
 
     // the delimiter between the key and your search query
     // e.g. to search GitHub for potatoes you'd type "g:potatoes"
@@ -50,7 +53,8 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    color: #222;
+    background-color: #16161d;
+    color: #fff;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
   }
@@ -89,8 +93,8 @@
     padding: 12px;
     transition: 0.5s;
     border-radius: 2px;
-    background-color: #222;
-    color: #fff;
+    background-color: #fff;
+    color: #16161d;
     font-family: 'Lato', sans-serif;
     font-size: 1.1rem;
   }
@@ -105,7 +109,7 @@
     padding: 15px 0 0;
     transition: transform 700ms;
     transform: translateX(-205px);
-    background-color: #fff;
+    background-color: #16161d;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
     overflow: auto;
     z-index: 1;
@@ -143,10 +147,12 @@
 
   .help-key {
     font-family: 'Courier New', monospace;
+    color: #fff;
   }
 
   .help-name {
     font-size: 0.9rem;
+    color: #fff;
   }
 </style>
 
@@ -178,7 +184,7 @@
 
     function setTime() {
       var date = new Date();
-      clock.innerHTML = pad(date.getHours()) + ' ' + pad(date.getMinutes());
+      clock.innerHTML = pad(date.getHours()) + ':' + pad(date.getMinutes());
     }
 
     setTime();
